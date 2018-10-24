@@ -1,0 +1,906 @@
+git init
+git add -A
+git commit -m "1st commit"
+git push -u origin master
+
+
+zaaviyah 302 Android training Date
+
+Activity  +================
+
+================Callback & Description================
+
+
+===============/  onCreate()
+
+
+
+2=================/	onStart()
+
+
+
+3========== /	onResume()
+
+
+
+4============/	onPause()
+
+
+
+5	
+========= /onStop()
+
+
+
+6	
+======= /onDestroy()
+
+
+
+7	
+==========/ onRestart()
+
+
+
+======== exmple ====== here know as that 
+
+@Override
+   protected void onStart() {
+      super.onStart();
+      Log.d(msg, "The onStart() event");
+   }
+
+   /** Called when the activity has become visible. */
+   @Override
+   protected void onResume() {
+      super.onResume();
+      Log.d(msg, "The onResume() event");
+   }
+
+   /** Called when another activity is taking focus. */
+   @Override
+   protected void onPause() {
+      super.onPause();
+      Log.d(msg, "The onPause() event");
+   }
+
+   /** Called when the activity is no longer visible. */
+   @Override
+   protected void onStop() {
+      super.onStop();
+      Log.d(msg, "The onStop() event");
+   }
+
+   /** Called just before the activity is destroyed. */
+   @Override
+   public void onDestroy() {
+      super.onDestroy();
+      Log.d(msg, "The onDestroy() event");
+   }
+
+
+
+This callback is called when the activity restarts after stopping it.
+
+
+============================================layout Android - UI Layouts Topic 2 =========================== 
+
+
+The ViewGroup is a subclass of View and provides invisible container that hold other Views or
+ other ViewGroups and define their layout properties.
+
+
+==================================/Attribute & Description
+
+android:id
+
+
+2	android:layout_width
+
+
+
+3	android:layout_height
+
+
+
+4	android:layout_marginTop
+
+
+
+5	android:layout_marginBottom
+
+
+
+6	android:layout_marginLeft
+
+
+
+7	android:layout_marginRight
+
+
+
+8	android:layout_gravity
+
+
+
+9	android:layout_weight
+
+
+
+10	android:layout_x
+
+
+11	android:layout_y
+
+
+
+12	android:layout_width
+
+
+13	android:layout_width
+
+T
+
+14	android:paddingLeft
+
+
+
+15	android:paddingRight
+
+
+
+16	android:paddingTop
+
+
+
+17	android:paddingBottom
+
+
+==========================/================================
+
+
+
+ 1      Linear Layout
+
+
+2	Relative Layout
+
+
+3	Table Layout
+
+
+4	Absolute Layout
+
+
+5	Frame Layout
+
+
+6	List View
+
+
+7	Grid View
+
+==================================Relative Layout=====================
+
+
+
+1	android:layout_above
+
+2	android:layout_alignBottom
+
+
+
+3	android:layout_alignLeft
+
+
+
+4	android:layout_alignParentBottom
+
+If true, makes the bottom edge of this view match the bottom edge of the parent. Must be a boolean value, either "true" or "false".
+
+5	android:layout_alignParentEnd
+
+If true, makes the end edge of this view match the end edge of the parent. Must be a boolean value, either "true" or "false".
+
+6	android:layout_alignParentLeft
+
+If true, makes the left edge of this view match the left edge of the parent. Must be a boolean value, either "true" or "false".
+
+7	android:layout_alignParentRight
+
+If true, makes the right edge of this view match the right edge of the parent. Must be a boolean value, either "true" or "false".
+
+8	android:layout_alignParentStart
+
+If true, makes the start edge of this view match the start edge of the parent. Must be a boolean value, either "true" or "false".
+
+9	android:layout_alignParentTop
+
+If true, makes the top edge of this view match the top edge of the parent. Must be a boolean value, either "true" or "false".
+
+10	android:layout_alignRight
+
+Makes the right edge of this view match the right edge of the given anchor view ID and must be a reference to another resource, in the form "@[+][package:]type:name".
+
+11	android:layout_alignStart
+
+Makes the start edge of this view match the start edge of the given anchor view ID and must be a reference to another resource, in the form "@[+][package:]type:name".
+
+12	android:layout_alignTop
+
+Makes the top edge of this view match the top edge of the given anchor view ID and must be a reference to another resource, in the form "@[+][package:]type:name".
+
+13	android:layout_below
+
+Positions the top edge of this view below the given anchor view ID and must be a reference to another resource, in the form "@[+][package:]type:name".
+
+14	android:layout_centerHorizontal
+
+If true, centers this child horizontally within its parent. Must be a boolean value, either "true" or "false".
+
+15	android:layout_centerInParent
+
+If true, centers this child horizontally and vertically within its parent. Must be a boolean value, either "true" or "false".
+
+16	android:layout_centerVertical
+
+If true, centers this child vertically within its parent. Must be a boolean value, either "true" or "false".
+
+17	android:layout_toEndOf
+
+Positions the start edge of this view to the end of the given anchor view ID and must be a reference to another resource, in the form "@[+][package:]type:name".
+
+18	android:layout_toLeftOf
+
+Positions the right edge of this view to the left of the given anchor view ID and must be a reference to another resource, in the form "@[+][package:]type:name".
+
+19	android:layout_toRightOf
+
+Positions the left edge of this view to the right of the given anchor view ID and must be a reference to another resource, in the form "@[+][package:]type:name".
+
+20	android:layout_toStartOf
+
+
+Positions the end edge of this view to the start of the given anchor view ID and must be a reference to another resource, in the form "@[+][package:]type:name".
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   android:layout_width="fill_parent"
+   android:layout_height="fill_parent"
+   android:paddingLeft="16dp"
+   android:paddingRight="16dp" >
+   
+   <EditText
+      android:id="@+id/name"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:hint="@string/reminder" />
+      
+   <LinearLayout
+      android:orientation="vertical"
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent"
+      android:layout_alignParentStart="true"
+      android:layout_below="@+id/name">
+      
+      <Button
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="New Button"
+         android:id="@+id/button" />
+      
+      <Button
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="New Button"
+         android:id="@+id/button2" />
+      
+   </LinearLayout>
+
+</RelativeLayout>
+
+
+============================LINEAR LAYOUT============================
+
+1	android:id
+
+
+
+2	android:baselineAligned
+
+			This must be a boolean value, either "true" or "false" and prevents the layout from aligning its children's baselines.
+
+3	android:baselineAlignedChildIndex
+
+			When a linear layout is part of another layout that is baseline aligned, it can specify which of its children to baseline align.
+
+4	android:divider
+
+			This is drawable to use as a vertical divider between buttons. You use a color value, in the form of "#rgb", "#argb", "#rrggbb", or "#aarrggbb".
+
+5	android:gravity
+
+			This specifies how an object should position its content, on both the X and Y axes. Possible values are top, bottom, left, right, center, center_vertical, center_horizontal etc.
+
+6	android:orientation
+
+			This specifies the direction of arrangement and you will use "horizontal" for a row, "vertical" for a column. The default is horizontal.
+
+7	android:weightSum
+
+			Sum up of child weight
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   android:layout_width="fill_parent"
+   android:layout_height="fill_parent"
+   android:orientation="vertical" >
+   
+   <Button android:id="@+id/btnStartService"
+      android:layout_width="270dp"
+      android:layout_height="wrap_content"
+      android:text="start_service"/>
+      
+   <Button android:id="@+id/btnPauseService"
+      android:layout_width="270dp"
+      android:layout_height="wrap_content"
+      android:text="pause_service"/>
+      
+   <Button android:id="@+id/btnStopService"
+      android:layout_width="270dp"
+      android:layout_height="wrap_content"
+      android:text="stop_service"/>
+      
+</LinearLayout>
+
+
+====================================Android Table Layout========================
+
+1	android:id    .
+
+2	android:collapseColumns
+
+			This specifies the zero-based index of the columns to collapse. The column indices must be separated by a comma: 1, 2, 5.
+
+3	android:shrinkColumns
+
+			The zero-based index of the columns to shrink. The column indices must be separated by a comma: 1, 2, 5.
+
+4	android:stretchColumns
+
+			The zero-based index of the columns to stretch. The column indices must be separated by a comma: 1, 2, 5.
+
+
+
+package com.example.demo;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.Menu;
+
+public class MainActivity extends Activity {
+   @Override
+   protected void onCreate(Bundle savedInstanceState) {
+      super.onCreate(savedInstanceState);
+      setContentView(R.layout.activity_main);
+   }
+   
+}
+
+===============================<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   android:layout_width="fill_parent"
+   android:layout_height="fill_parent">
+   
+   <TableRow
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent">
+		
+      <TextView
+         android:text="Time"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_column="1" />
+			
+      <TextClock
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:id="@+id/textClock"
+         android:layout_column="2" />
+			
+   </TableRow>
+   
+   <TableRow>
+	
+      <TextView
+         android:text="First Name"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_column="1" />
+			
+      <EditText
+         android:width="200px"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content" />
+   </TableRow>
+   
+   <TableRow>
+	
+      <TextView
+         android:text="Last Name"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_column="1" />
+			
+      <EditText
+         android:width="100px"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content" />
+   </TableRow>
+   
+   <TableRow
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent">
+		
+      <RatingBar
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:id="@+id/ratingBar"
+         android:layout_column="2" />
+   </TableRow>
+   
+   <TableRow
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent"/>
+		
+   <TableRow
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent">
+		
+      <Button
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="Submit"
+         android:id="@+id/button"
+         android:layout_column="2" />
+   </TableRow>
+
+</TableLayout>
+
+
+
+
+============================Android Absolute Layout==============================
+
+
+
+Sr.No	Attribute & Description
+
+1	android:id
+
+		This is the ID which uniquely identifies the layout.
+
+2	android:layout_x
+
+			This specifies the x-coordinate of the view.
+
+3	android:layout_y
+
+			This specifies the y-coordinate of the view.
+
+
+package com.example.demo;
+
+import android.os.Bundle;
+import android.app.Activity;
+
+public class MainActivity extends Activity {
+   @Override
+   protected void onCreate(Bundle savedInstanceState) {
+      super.onCreate(savedInstanceState);
+      setContentView(R.layout.activity_main);
+   }
+   
+}
+
+
+
+
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   android:layout_width="fill_parent"
+   android:layout_height="fill_parent">
+   
+   <Button
+      android:layout_width="100dp"
+      android:layout_height="wrap_content"
+      android:text="OK"
+      android:layout_x="50px"
+      android:layout_y="361px" />
+   <Button
+      android:layout_width="100dp"
+      android:layout_height="wrap_content"
+      android:text="Cancel"
+      android:layout_x="225px"
+      android:layout_y="361px" />
+
+</AbsoluteLayout>
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+   <string name="app_name">demo</string>
+   <string name="action_settings">Settings</string>
+</resources>
+
+============================Android Frame Layout========================
+
+
+1	android:id
+
+			This is the ID which uniquely identifies the layout.
+
+2	android:foreground
+
+			This defines the drawable to draw over the content and possible values may be a color value, in the form of "#rgb", "#argb", "#rrggbb", or "#aarrggbb".
+
+3	android:foregroundGravity
+
+			Defines the gravity to apply to the foreground drawable. The gravity defaults to fill. Possible values are top, bottom, left, right, center, center_vertical, center_horizontal etc.
+
+4	android:measureAllChildren
+
+			Determines whether to measure all children or just those in the VISIBLE or INVISIBLE state when measuring. Defaults to false.
+
+
+
+package com.example.demo;
+
+import android.os.Bundle;
+import android.app.Activity;
+
+public class MainActivity extends Activity {
+   @Override
+   protected void onCreate(Bundle savedInstanceState) {
+      super.onCreate(savedInstanceState);
+      setContentView(R.layout.activity_main);
+   }
+}
+
+
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   android:layout_width="fill_parent"
+   android:layout_height="fill_parent">
+   
+   <ImageView 
+      android:src="@drawable/ic_launcher"
+      android:scaleType="fitCenter"
+      android:layout_height="250px"
+      android:layout_width="250px"/>
+   
+   <TextView
+      android:text="Frame Demo"
+      android:textSize="30px"
+      android:textStyle="bold"
+      android:layout_height="fill_parent"
+      android:layout_width="fill_parent"
+      android:gravity="center"/>
+</FrameLayout>
+
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+   <string name="app_name">demo</string>
+   <string name="action_settings">Settings</string>
+</resources>
+
+
+
+
+
+package com.example.demo;
+
+import android.os.Bundle;
+import android.app.Activity;
+
+public class MainActivity extends Activity {
+   @Override
+   protected void onCreate(Bundle savedInstanceState) {
+      super.onCreate(savedInstanceState);
+      setContentView(R.layout.activity_main);
+   }
+   
+}
+
+
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   android:layout_width="fill_parent"
+   android:layout_height="fill_parent">
+   
+   <Button
+      android:layout_width="100dp"
+      android:layout_height="wrap_content"
+      android:text="OK"
+      android:layout_x="50px"
+      android:layout_y="361px" />
+   <Button
+      android:layout_width="100dp"
+      android:layout_height="wrap_content"
+      android:text="Cancel"
+      android:layout_x="225px"
+      android:layout_y="361px" />
+
+</AbsoluteLayout>
+
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+   <string name="app_name">demo</string>
+   <string name="action_settings">Settings</string>
+</resources>
+
+
+
+-==================================Android List View===================
+
+
+
+1	android:idThis is the ID which uniquely identifies the layout.
+
+2	android:divider
+
+		This is drawable or color to draw between list items.
+
+3	android:dividerHeight
+
+		This specifies height of the divider. This could be in px, dp, sp, in, or mm.
+
+4	android:entries
+
+		Specifies the reference to an array resource that will populate the ListView.
+
+5	android:footerDividersEnabled
+
+		When set to false, the ListView will not draw the divider before each footer view. The default value is true.
+
+6	android:headerDividersEnabled
+
+		When set to false, the ListView will not draw the divider after each header view. The default value is true.
+
+ArrayAdapter
+You can use this adapter when your data source is an array. By default, ArrayAdapter creates a view for each array item by calling toString() on each item and placing the contents in a TextView. Consider you have an array of strings you want to display in a ListView, initialize a new ArrayAdapter using a constructor to specify the layout for each string and the string array -
+
+ArrayAdapter adapter = new ArrayAdapter<String>(this,R.layout.ListView,StringArray);
+
+
+
+
+Here are arguments for this constructor 
+
+First argument this is the application context. Most of the case, keep it this.
+
+Second argument will be layout defined in XML file and having TextView for each string in the array.
+
+Final argument is an array of strings which will be populated in the text view.
+
+Once you have array adapter created, then simply call setAdapter() on your ListView object as follows -
+
+ListView listView = (ListView) findViewById(R.id.listview);
+listView.setAdapter(adapter);
+
+
+
+package com.example.ListDisplay;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.Menu;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+public class ListDisplay extends Activity {
+   // Array of strings...
+   String[] mobileArray = {"Android","IPhone","WindowsMobile","Blackberry",
+      "WebOS","Ubuntu","Windows7","Max OS X"};
+   
+   @Override
+   protected void onCreate(Bundle savedInstanceState) {
+      super.onCreate(savedInstanceState);
+      setContentView(R.layout.activity_main);
+      
+      ArrayAdapter adapter = new ArrayAdapter<String>(this, 
+         R.layout.activity_listview, mobileArray);
+      
+      ListView listView = (ListView) findViewById(R.id.mobile_list);
+      listView.setAdapter(adapter);
+   }
+}
+
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:tools="http://schemas.android.com/tools"
+   android:layout_width="match_parent"
+   android:layout_height="match_parent"
+   android:orientation="vertical"
+   tools:context=".ListActivity" >
+
+   <ListView
+      android:id="@+id/mobile_list"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content" >
+   </ListView>
+ 
+</LinearLayout>
+
+
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+   <string name="app_name">ListDisplay</string>
+   <string name="action_settings">Settings</string>
+</resources>
+
+
+
+============================================Android Grid View======================
+
+1	android:id
+
+		This is the ID which uniquely identifies the layout.
+
+2	android:columnWidth
+
+		This specifies the fixed width for each column. This could be in px, dp, sp, in, or mm.
+
+3	android:gravity
+
+		Specifies the gravity within each cell. Possible values are top, bottom, left, right, center, center_vertical, center_horizontal etc.
+
+4	android:horizontalSpacing
+
+		Defines the default horizontal spacing between columns. This could be in px, dp, sp, in, or mm.
+
+5	android:numColumns
+
+		Defines how many columns to show. May be an integer value, such as "100" or auto_fit which means display as many columns as possible to fill the available space.
+
+6	android:stretchMode
+
+		Defines how columns should stretch to fill the available empty space, if any. This must be either of the values -
+
+none - Stretching is disabled.
+
+
+package com.example.helloworld;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.Menu;
+import android.widget.GridView;
+
+public class MainActivity extends Activity {
+   @Override
+   protected void onCreate(Bundle savedInstanceState) {
+      super.onCreate(savedInstanceState);
+      setContentView(R.layout.activity_main);
+      
+      GridView gridview = (GridView) findViewById(R.id.gridview);
+      gridview.setAdapter(new ImageAdapter(this));
+   }
+}
+
+
+
+=================================
+<?xml version="1.0" encoding="utf-8"?>
+<GridView xmlns:android="http://schemas.android.com/apk/res/android"
+   android:id="@+id/gridview"
+   android:layout_width="fill_parent" 
+   android:layout_height="fill_parent"
+   android:columnWidth="90dp"
+   android:numColumns="auto_fit"
+   android:verticalSpacing="10dp"
+   android:horizontalSpacing="10dp"
+   android:stretchMode="columnWidth"
+   android:gravity="center"
+/>
+
+
+
+
+
+==========================
+
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+   <string name="app_name">HelloWorld</string>
+   <string name="action_settings">Settings</string>
+</resources>
+
+
+
+=========================
+
+
+package com.example.helloworld;
+
+import android.content.Context;
+
+import android.view.View;
+import android.view.ViewGroup;
+
+import android.widget.BaseAdapter;
+import android.widget.GridView;
+import android.widget.ImageView;
+
+public class ImageAdapter extends BaseAdapter {
+   private Context mContext;
+   
+   // Constructor
+   public ImageAdapter(Context c) {
+      mContext = c;
+   }
+   
+   public int getCount() {
+      return mThumbIds.length;
+   }
+
+   public Object getItem(int position) {
+      return null;
+   }
+
+   public long getItemId(int position) {
+      return 0;
+   }
+   
+   // create a new ImageView for each item referenced by the Adapter
+   public View getView(int position, View convertView, ViewGroup parent) {
+      ImageView imageView;
+      
+      if (convertView == null) {
+         imageView = new ImageView(mContext);
+         imageView.setLayoutParams(new GridView.LayoutParams(85, 85));
+         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+         imageView.setPadding(8, 8, 8, 8);
+      } 
+      else 
+      {
+         imageView = (ImageView) convertView;
+      }
+      imageView.setImageResource(mThumbIds[position]);
+      return imageView;
+   }
+   
+   // Keep all Images in array
+   public Integer[] mThumbIds = {
+      R.drawable.sample_2, R.drawable.sample_3,
+      R.drawable.sample_4, R.drawable.sample_5,
+      R.drawable.sample_6, R.drawable.sample_7,
+      R.drawable.sample_0, R.drawable.sample_1,
+      R.drawable.sample_2, R.drawable.sample_3,
+      R.drawable.sample_4, R.drawable.sample_5,
+      R.drawable.sample_6, R.drawable.sample_7,
+      R.drawable.sample_0, R.drawable.sample_1,
+      R.drawable.sample_2, R.drawable.sample_3,
+      R.drawable.sample_4, R.drawable.sample_5,
+      R.drawable.sample_6, R.drawable.sample_7
+   };
+}
+
+
+
+
+
+spacingWidth - The spacing between each column is stretched.
+
+columnWidth - Each column is stretched equally.
+
+spacingWidthUniform - The spacing between each column is uniformly stretched..
+
+7	
+android:verticalSpacing
+
+Defines the default vertical spacing between rows. This could be in px, dp, sp, in, or mm.
