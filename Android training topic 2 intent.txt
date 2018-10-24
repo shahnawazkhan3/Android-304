@@ -1,0 +1,752 @@
+
+=
+
+//// Intents //
+An Android Intent is an abstract description of an operation to be performed. It can be used with startActivity to launch an Activity, broadcastIntent to send it to any interested BroadcastReceiver components, and startService(Intent) or 
+bindService(Intent, ServiceConnection, int) to communicate with a background Service
+
+====================/exmple here =========================
+
+
+Intent email = new Intent(Intent.ACTION_SEND, Uri.parse("mailto:"));
+
+email.putExtra(Intent.EXTRA_EMAIL, recipients);
+
+email.putExtra(Intent.EXTRA_SUBJECT, subject.getText().toString());
+
+email.putExtra(Intent.EXTRA_TEXT, body.getText().toString());
+
+startActivity(email);
+
+
+==================/=====================
+
+String q = "zaaviyah.com";
+
+Intent intent = new Intent(Intent.ACTION_WEB_SEARCH );
+
+intent.putExtra(SearchManager.QUERY, q);
+
+startActivity(intent)
+
+
+
+	
+1  Context.startActivity()
+
+ 	The Intent object is passed to this method to launch a new activity or get an existing activity to do something new.
+
+2 Context.startService()
+
+		The Intent object is passed to this method to initiate a service or deliver new instructions to an ongoing service.
+
+3Context.sendBroadcast()
+
+The Intent object is passed to this method to deliver the message to all interested broadcast receivers.
+
+
+
+=====================/==================
+
+Intent Objects
+	An Intent object is a bundle of information which is used by the component that receives the intent 
+	as well as information used by the Android system.
+
+
+=========================/Action=================
+===================Activity Action Intent & Description======================
+
+this is mandatory part of the Intent object and is a string naming the action to be performed  or, 
+in the case of broadcast intents, the action that took place and is being reported. 
+The action largely determines how the rest of the intent object is structured . The Intent class defines a number of action 
+constants corresponding to different intents. Here is a list of Android Intent Standard 
+
+The action in an Intent object can be set by the setAction() method and read by getAction().
+
+1	ACTION_ALL_APPS
+
+			List all the applications available on the device.
+
+2	ACTION_ANSWER
+
+			Handle an incoming phone call.
+
+3	ACTION_ATTACH_DATA
+
+		Used to indicate that some piece of data should be attached to some other place
+
+4	ACTION_BATTERY_CHANGED
+
+		This is a sticky broadcast containing the charging state, level, and other information about the battery.
+
+5	ACTION_BATTERY_LOW
+
+		This broadcast corresponds to the "Low battery warning" system dialog.
+
+6	ACTION_BATTERY_OKAY
+
+		This will be sent after ACTION_BATTERY_LOW once the battery has gone back up to an okay state.
+
+7	ACTION_BOOT_COMPLETED
+
+		This is broadcast once, after the system has finished booting.
+
+8	ACTION_BUG_REPORT
+
+		Show activity for reporting a bug.
+
+9	ACTION_CALL
+
+		Perform a call to someone specified by the data.
+
+10	ACTION_CALL_BUTTON
+
+		The user pressed the "call" button to go to the dialer or other appropriate UI for placing a call.
+
+11	ACTION_CAMERA_BUTTON
+
+			The "Camera Button" was pressed.
+
+12	ACTION_CHOOSER
+
+			Display an activity chooser, allowing the user to pick what they want to before proceeding.
+
+13	ACTION_CONFIGURATION_CHANGED
+
+			The current device Configuration (orientation, locale, etc) has changed.
+
+14	ACTION_DATE_CHANGED
+
+				The date has changed.
+
+15	ACTION_DEFAULT
+
+			A synonym for ACTION_VIEW, the "standard" action that is performed on a piece of data.
+
+16	ACTION_DELETE
+
+			Delete the given data from its container.
+
+17	ACTION_DEVICE_STORAGE_LOW
+
+			A sticky broadcast that indicates low memory condition on the device.
+
+18	ACTION_DEVICE_STORAGE_OK
+
+				Indicates low memory condition on the device no longer exists.
+
+19	ACTION_DIAL
+
+			Dial a number as specified by the data.
+
+20	ACTION_DOCK_EVENT
+
+				A sticky broadcast for changes in the physical docking state of the device.
+
+21	ACTION_DREAMING_STARTED
+
+				Sent after the system starts dreaming.
+
+22	ACTION_DREAMING_STOPPED
+
+				Sent after the system stops dreaming.
+
+23	ACTION_EDIT
+
+				Provide explicit editable access to the given data.
+
+24	ACTION_FACTORY_TEST
+
+				Main entry point for factory tests.
+
+25	ACTION_GET_CONTENT
+
+				Allow the user to select a particular kind of data and return it.
+
+26	ACTION_GTALK_SERVICE_CONNECTED
+
+				A GTalk connection has been established.
+
+27	ACTION_GTALK_SERVICE_DISCONNECTED
+
+A				 GTalk connection has been disconnected.
+
+28	ACTION_HEADSET_PLUG
+
+				Wired Headset plugged in or unplugged.
+
+29	ACTION_INPUT_METHOD_CHANGED
+
+				An input method has been changed.
+
+30	ACTION_INSERT
+
+				Insert an empty item into the given container.
+
+31	ACTION_INSERT_OR_EDIT
+
+				Pick an existing item, or insert a new item, and then edit it.
+
+32	ACTION_INSTALL_PACKAGE
+
+				Launch application installer.
+
+33	ACTION_LOCALE_CHANGED
+
+			The current device's locale has changed.
+
+34	ACTION_MAIN
+
+			Start as a main entry point, does not expect to receive data.
+
+35	ACTION_MEDIA_BUTTON
+
+				The "Media Button" was pressed.
+
+36	ACTION_MEDIA_CHECKING
+
+				External media is present, and being disk-checked.
+
+37	ACTION_MEDIA_EJECT
+
+				User has expressed the desire to remove the external storage media.
+
+38	ACTION_MEDIA_REMOVED
+
+					External media has been removed.
+
+39	ACTION_NEW_OUTGOING_CALL
+
+				An outgoing call is about to be placed.
+
+40	ACTION_PASTE
+
+				Create a new item in the given container, initializing it from the current contents of the clipboard.
+
+41	ACTION_POWER_CONNECTED
+
+				External power has been connected to the device.
+
+42	ACTION_REBOOT
+
+				Have the device reboot. This is only for use by system code.
+
+43	ACTION_RUN
+
+				Run the data, whatever that means.
+
+44	ACTION_SCREEN_OFF
+
+				Sent after the screen turns off.
+
+45	ACTION_SCREEN_ON
+
+				Sent after the screen turns on.
+
+46	ACTION_SEARCH
+
+				Perform a search.
+
+47	ACTION_SEND
+
+				Deliver some data to someone else.
+
+48	ACTION_SENDTO
+
+				Send a message to someone specified by the data.
+
+49	ACTION_SEND_MULTIPLE
+
+				Deliver multiple data to someone else.
+
+50	ACTION_SET_WALLPAPER
+
+				Show settings for choosing wallpaper.
+
+51	ACTION_SHUTDOWN
+
+				Device is shutting down.
+
+52	ACTION_SYNC
+
+				Perform a data synchronization.
+
+53	ACTION_TIMEZONE_CHANGED
+
+				The timezone has changed.
+
+54	ACTION_TIME_CHANGED
+
+				The time was set.
+
+55	ACTION_VIEW
+
+				Display the data to the user.
+
+56	ACTION_VOICE_COMMAND
+
+				Start Voice Command.
+
+57	ACTION_WALLPAPER_CHANGED
+
+				The current system wallpaper has changed.
+
+58	ACTION_WEB_SEARCH
+
+				Perform a web search.
+
+
+=====================Data=======================
+
+
+Adds a data specification to an intent filter. The specification can be just a data 
+
+type (the mimeType attribute), just a URI, or both a data type and a URI. 
+
+A URI is specified by separate attributes for each of its parts
+
+These attributes that specify the URL format are optional, but also mutually dependent
+
+If a scheme is not specified for the intent filter, all the other URI attributes are ignored.
+If a host is not specified for the filter, the port attribute and all the path attributes are ignored.
+
+The setData() method specifies data only as a URI, setType() 
+specifies it only as a MIME type, 
+and setDataAndType() specifies it as 
+
+========================Category============================
+
+
+1	CATEGORY_APP_BROWSER
+
+			Used with ACTION_MAIN to launch the browser application.
+
+2	CATEGORY_APP_CALCULATOR
+
+			Used with ACTION_MAIN to launch the calculator application.
+
+3	CATEGORY_APP_CALENDAR
+
+			Used with ACTION_MAIN to launch the calendar application.
+
+4	CATEGORY_APP_CONTACTS
+
+			Used with ACTION_MAIN to launch the contacts application.
+
+5	CATEGORY_APP_EMAIL
+
+			Used with ACTION_MAIN to launch the email application.
+
+6	CATEGORY_APP_GALLERY
+
+			Used with ACTION_MAIN to launch the gallery application.
+
+7	CATEGORY_APP_MAPS
+
+			Used with ACTION_MAIN to launch the maps application.
+
+8	CATEGORY_APP_MARKET
+
+			This activity allows the user to browse and download new applications.
+
+9	CATEGORY_APP_MESSAGING
+
+			Used with ACTION_MAIN to launch the messaging application.
+
+10	CATEGORY_APP_MUSIC
+
+			Used with ACTION_MAIN to launch the music application.
+
+11	CATEGORY_BROWSABLE
+
+			Activities that can be safely invoked from a browser must support this category.
+
+12	CATEGORY_CAR_DOCK
+
+					An activity to run when device is inserted into a car dock.
+
+13	CATEGORY_CAR_MODE
+
+			Used to indicate that the activity can be used in a car environment.
+
+14	CATEGORY_DEFAULT
+
+			Set if the activity should be an option for the default action (center press) to perform on a piece of data.
+
+15	CATEGORY_DESK_DOCK
+
+		An activity to run when device is inserted into a car dock.
+
+16	CATEGORY_DEVELOPMENT_PREFERENCE
+
+				This activity is a development preference panel.
+
+17	CATEGORY_EMBED
+
+				Capable of running inside a parent activity container.
+
+18	CATEGORY_FRAMEWORK_INSTRUMENTATION_TEST
+
+				To be used as code under test for framework instrumentation tests.
+
+19	CATEGORY_HE_DESK_DOCK
+
+				An activity to run when device is inserted into a digital (high end) dock.
+
+20	CATEGORY_HOME
+
+			This is the home activity, that is the first activity that is displayed when the device boots.
+
+21	CATEGORY_INFO
+
+			Provides information about the package it is in.
+
+22	CATEGORY_LAUNCHER
+
+				Should be displayed in the top-level launcher.
+
+23	CATEGORY_LE_DESK_DOCK
+
+				An activity to run when device is inserted into a analog (low end) dock.
+
+24	CATEGORY_MONKEY
+
+			This activity may be exercised by the monkey or other automated test tools.
+
+25	CATEGORY_OPENABLE
+			Used to indicate that a GET_CONTENT intent only wants URIs that can be opened with ContentResolver.openInputStream.
+
+26	CATEGORY_PREFERENCE
+
+			This activity is a preference panel.
+
+27	CATEGORY_TAB
+
+			Intended to be used as a tab inside of a containing TabActivity.
+
+28	CATEGORY_TEST
+
+			To be used as a test (not part of the normal user experience).
+
+29	CATEGORY_UNIT_TEST
+
+					To be used as a unit test (run through the Test Harness).
+				both a URI and a MIME type. The URI is read by getData() and the type by getType().
+
+
+
+===================================/Extras/=================
+
+This will be in key-value pairs for additional information that should be delivered to the component
+ handling the intent. The extras can be set and read using the putExtras() 
+
+========
+1	EXTRA_ALARM_COUNT
+
+			Used as an int extra field in AlarmManager intents to tell the application being invoked how many pending alarms are being delievered with the intent.
+
+2	EXTRA_ALLOW_MULTIPLE
+
+			Used to indicate that a ACTION_GET_CONTENT intent can allow the user to select and return multiple items.
+
+3	EXTRA_ALLOW_REPLACE
+
+			Used as a boolean extra field with ACTION_INSTALL_PACKAGE to install a package.
+
+4	EXTRA_BCC
+
+A 			String[] holding e-mail addresses that should be blind carbon copied.
+
+5	EXTRA_CC
+
+A 				String[] holding e-mail addresses that should be carbon copied.
+
+6	EXTRA_CHANGED_COMPONENT_NAME_LIST
+
+			This field is part of ACTION_PACKAGE_CHANGED, and contains a string array of all of the components that have changed.
+
+7	EXTRA_DATA_REMOVED
+
+			Used as a boolean extra field in ACTION_PACKAGE_REMOVED intents to indicate whether this represents a full uninstall or a partial uninstall
+
+8	EXTRA_DOCK_STATE
+
+			Used as an int extra field in ACTION_DOCK_EVENT intents to request the dock state.
+
+9	EXTRA_DOCK_STATE_CAR
+
+			Used as an int value for EXTRA_DOCK_STATE to represent that the phone is in a car dock.
+
+10	EXTRA_DOCK_STATE_DESK
+
+				Used as an int value for EXTRA_DOCK_STATE to represent that the phone is in a desk dock.
+
+11	EXTRA_EMAIL
+
+				A String[] holding e-mail addresses that should be delivered to.
+
+12	EXTRA_HTML_TEXT
+
+				A constant String that is associated with the Intent, used with ACTION_SEND to supply an alternative to EXTRA_TEXT as HTML formatted text.
+
+13	EXTRA_INTENT
+
+			An Intent describing the choices you would like shown with ACTION_PICK_ACTIVITY.
+
+14	EXTRA_KEY_EVENT
+
+				A KeyEvent object containing the event that triggered the creation of the Intent it is in.
+
+15	EXTRA_LOCAL_ONLY
+
+				Used to indicate that a ACTION_GET_CONTENT intent should only return data that is on the local device.
+
+16	EXTRA_ORIGINATING_URI
+
+			Used as a URI extra field with ACTION_INSTALL_PACKAGE and ACTION_VIEW to indicate the URI from which the local APK in the Intent data field originated from.
+
+17	EXTRA_PHONE_NUMBER
+
+			A String holding the phone number originally entered in ACTION_NEW_OUTGOING_CALL, or the actual number to call in a ACTION_CALL.
+
+18	EXTRA_SHORTCUT_ICON
+
+			The name of the extra used to define the icon, as a Bitmap, of a shortcut.
+
+19	EXTRA_SHORTCUT_INTENT
+
+				The name of the extra used to define the Intent of a shortcut.
+
+20	EXTRA_SHORTCUT_NAME
+
+				The name of the extra used to define the name of a shortcut.
+
+21	EXTRA_STREAM
+
+				URI holding a stream of data associated with the Intent, used with ACTION_SEND to supply the data being sent.
+
+22	EXTRA_SUBJECT
+
+			A constant string holding the desired subject line of a message.
+
+23	EXTRA_TEMPLATE
+
+			The initial data to place in a newly created record. Use with ACTION_INSERT.
+
+24	EXTRA_TEXT
+
+			A constant CharSequence that is associated with the Intent, used with ACTION_SEND to supply the literal data to be sent.
+
+25	EXTRA_TITLE
+
+			A CharSequence dialog title to provide to the user when used with a ACTION_CHOOSER.
+
+26	EXTRA_UID
+
+			Used as an int extra field in ACTION_UID_REMOVED intents to supply the uid the package had been assigned.
+				and getExtras() methods respectively. Here is a list of Android Intent Standard
+
+
+
+
+=============================/=================Flags=======================
+
+1	FLAG_ACTIVITY_CLEAR_TASK
+
+If set in an Intent passed to Context.startActivity(), this flag will \
+cause any existing task that would be associated with the activity to be cleared before the activity is started. That is, the activity
+ becomes the new root of an otherwise empty task, and any old activities are finished. This can only be used in conjunction with FLAG_ACTIVITY_NEW_TASK.
+
+2	FLAG_ACTIVITY_CLEAR_TOP
+
+If set, and the activity being launched is already running in the current 
+task, then instead of launching a new instance of that activity, all of the other activities on top of it will be closed and this Intent will be delivered to the (now on top) old activity as a new Intent.
+
+3	FLAG_ACTIVITY_NEW_TASK
+
+This flag is generally used by activities that want to present a 
+"launcher" style behavior: they give the user a list of separate things that can be done, 
+which otherwise run completely independently of the activity launching them.
+
+======================================================================================================
+=====================================================================================
+==============================Types of Intents====================================
+There are following two types of intents supported by Android
+
+
+==================================== 1) Explicit Intents============
+
+Explicit intent going to be connected internal world of application,suppose if you wants to connect one activity to another activity, we can do this quote by explicit intent, 
+below image is connecting first activity to second activity by clicking button.
+
+
+======================== START ACTIVITY ===================
+
+// Explicit Intent by specifying its class name
+
+	Intent i = new Intent(FirstActivity.this, SecondActivity.class);
+
+// Starts TargetActivity
+
+	startActivity(i);
+
+
+======================Implicit Intents=====================
+
+These intents do not name a target and the field for the component name is left blank. 
+Implicit intents are often used to activate components in other applications.
+
+
+	Intent read1=new Intent();
+
+	read1.setAction(android.content.Intent.ACTION_VIEW);
+
+	read1.setData(ContactsContract.Contacts.CONTENT_URI);
+
+	startActivity(read1)
+
+
+==============================EXMPLE HERE SHOW KNOW THAT=============
+
+package com.example.saira_000.myapplication;
+
+import android.content.Intent;
+import android.net.Uri;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+public class MainActivity extends AppCompatActivity {
+   Button b1,b2;
+
+   @Override
+   protected void onCreate(Bundle savedInstanceState) {
+      super.onCreate(savedInstanceState);
+      setContentView(R.layout.activity_main);
+
+      b1=(Button)findViewById(R.id.button);
+      b1.setOnClickListener(new View.OnClickListener() {
+
+         @Override
+         public void onClick(View v) {
+            Intent i = new Intent(android.content.Intent.ACTION_VIEW, 
+               Uri.parse("http://www.example.com"));
+            startActivity(i);
+         }
+      });
+
+      b2=(Button)findViewById(R.id.button2);
+      b2.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View v) {
+            Intent i = new Intent(android.content.Intent.ACTION_VIEW,
+               Uri.parse("tel:9510300000"));
+            startActivity(i);
+         }
+      });
+   }
+}
+
+
+=====================Following will be the content of res/layout/activity_main.xml file==============
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:tools="http://schemas.android.com/tools" 
+   android:layout_width="match_parent"
+   android:layout_height="match_parent" 
+   android:paddingLeft="@dimen/activity_horizontal_margin"
+   android:paddingRight="@dimen/activity_horizontal_margin"
+   android:paddingTop="@dimen/activity_vertical_margin"
+   android:paddingBottom="@dimen/activity_vertical_margin" 
+   tools:context=".MainActivity">
+   
+   <TextView
+      android:id="@+id/textView1"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Intent Example"
+      android:layout_alignParentTop="true"
+      android:layout_centerHorizontal="true"
+      android:textSize="30dp" />
+      
+   <TextView
+      android:id="@+id/textView2"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Tutorials point"
+      android:textColor="#ff87ff09"
+      android:textSize="30dp"
+      android:layout_below="@+id/textView1"
+      android:layout_centerHorizontal="true" />
+      
+   <ImageButton
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:id="@+id/imageButton"
+      android:src="@drawable/abc"
+      android:layout_below="@+id/textView2"
+      android:layout_centerHorizontal="true" />
+      
+   <EditText
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:id="@+id/editText"
+      android:layout_below="@+id/imageButton"
+      android:layout_alignRight="@+id/imageButton"
+      android:layout_alignEnd="@+id/imageButton" />
+      
+   <Button
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Start Browser"
+      android:id="@+id/button"
+      android:layout_alignTop="@+id/editText"
+      android:layout_alignRight="@+id/textView1"
+      android:layout_alignEnd="@+id/textView1"
+      android:layout_alignLeft="@+id/imageButton"
+      android:layout_alignStart="@+id/imageButton" />
+      
+   <Button
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Start Phone"
+      android:id="@+id/button2"
+      android:layout_below="@+id/button"
+      android:layout_alignLeft="@+id/button"
+      android:layout_alignStart="@+id/button"
+      android:layout_alignRight="@+id/textView2"
+      android:layout_alignEnd="@+id/textView2" />
+</RelativeLayout>
+
+
+
+======================Following is the default content of AndroidManifest.xml=================
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+   package="com.example.saira_000.myapplication">
+
+   <application
+      android:allowBackup="true"
+      android:icon="@mipmap/ic_launcher"
+      android:label="@string/app_name"
+      android:supportsRtl="true"
+      android:theme="@style/AppTheme">
+      <activity android:name=".MainActivity">
+         <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+         </intent-filter>
+      </activity>
+   </application>
+</manifest>
+
+
+
+
+
+
+
+
+
