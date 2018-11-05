@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Etech_Intent_304</string>
+
+    <array name="generic">
+
+        <item>Rock</item>
+        <item>Fufi</item>
+        <item>PoP</item>
+        <item>feLK</item>
+
+
+    </array>
+</resources>

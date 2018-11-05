@@ -1,0 +1,282 @@
+
+
+===============Fragments=============
+
+1)	A fragment has its own layout and its own behaviour with its own life cycle callbacks.
+
+2)	You can add or remove fragments in an activity while the activity is running.
+
+3)	You can combine multiple fragments in a single activity to build a multi-pane UI.
+
+4)	A fragment can be used in multiple activities.
+
+5)	Fragment life cycle is closely related to the life cycle of its host activity which means when the activity is paused, all the fragments available in the activity will also be stopped.
+
+6)	A fragment can implement a behaviour that has no user interface component.
+
+=====================Fragment Life Cycle============
+
+
+
+1)	onAttach()
+
+The fragment instance is associated with an activity instance.The fragment and the activity is not fully initialized. Typically you get in this method a reference to the activity which uses the fragment for further initialization work.
+
+2)	onCreate()
+
+ The system calls this method when creating the fragment. You should initialize essential components of the fragment that you want to retain when the fragment is paused or stopped, then resumed.
+
+3)	onCreateView()
+
+ The system calls this callback when it's time for the fragment to draw its user interface for the first time. To draw a UI for your fragment, you must return a View component from this method that is the root of your fragment's layout. You can return null if the fragment does not provide a UI.
+
+4)	onActivityCreated()
+
+The onActivityCreated() is called after the onCreateView() method when the host activity is created. Activity and fragment instance have been created as well as the view hierarchy of the activity. At this point, view can be accessed with the findViewById() method. example. In this method you can instantiate objects which require a Context object
+
+5)	onStart()The onStart()
+
+ method is called once the fragment gets visible.
+
+6)	onResume()
+
+Fragment becomes active.
+
+7)	onPause()
+
+ The system calls this method as the first indication that the user is leaving the fragment. This is usually where you should commit any changes that should be persisted beyond the current user session.
+
+8) onStop()
+
+Fragment going to be stopped by calling onStop()
+
+9)	onDestroyView()
+
+Fragment view will destroy after call this method
+
+10)	onDestroy()
+
+onDestroy() called to do final clean up of the fragment's state but Not guaranteed to be called by the Android platform.
+
+
+
+
+==================Single Fragments=======
+
+
+
+
+mainactivity.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/content"
+    tools:context=".MainActivity">
+
+    <fragment
+
+        android:id="@+id/lm_fragment"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent" />
+
+    <fragment
+        android:id="@+id/pm_fragment"
+        android:layout_weight="2"
+        android:layout_width="0dp"
+        android:layout_height="match_parent" />
+
+</android.support.constraint.ConstraintLayout>
+
+
+
+lm_frgment.xml
+
+
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="128dp"
+        android:layout_marginTop="134dp"
+        android:text="LM 1st" />
+</RelativeLayout>
+
+
+
+pm_frgmnt.xml
+
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="2nd frgmnt" />
+</LinearLayout>
+
+
+
+
+===================mainactivty.java================
+
+
+package com.zaaviyah.zaaviyah_fragmemts;
+
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.content.res.Configuration;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        //setContentView(R.layout.activity_main);
+
+
+
+        /// here code
+        Configuration config = getResources().getConfiguration();
+
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+
+        if (config.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            /**
+             * Landscape mode of the device
+             */
+            LM_Fragement ls_fragment = new LM_Fragement();
+            fragmentTransaction.replace(android.R.id.content, ls_fragment);
+        }else{
+            /**
+             * Portrait mode of the device
+             */
+            PM_Fragement pm_fragment = new PM_Fragement();
+            fragmentTransaction.replace(android.R.id.content, pm_fragment);
+        }
+        fragmentTransaction.commit();
+    }
+}
+
+==================lmfrgemnt.java==============
+
+
+package com.zaaviyah.zaaviyah_fragmemts;
+
+import android.app.Fragment;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+public class LM_Fragement extends Fragment {
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        /**
+         * Inflate the layout for this fragment
+         */
+        return inflater.inflate(R.layout.lm_fragment, container, false);
+    }
+}
+
+
+
+=================pm_frgment.java
+
+package com.zaaviyah.zaaviyah_fragmemts;
+
+import android.app.Fragment;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+public class LM_Fragement extends Fragment {
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        /**
+         * Inflate the layout for this fragment
+         */
+        return inflater.inflate(R.layout.lm_fragment, container, false);
+    }
+}
+
+======================fragments====================
+
+  auth = FirebaseAuth.getInstance();
+        int id = menuItem.getItemId();
+
+        displaySelectedScreen(id);
+
+step 2 ==
+  private void  displaySelectedScreen (int id)
+    {
+
+        Fragment fragment =null;
+        Class fragmentClass;
+        switch(id)
+        {
+            case R.id.nav_menu1:
+                fragment = new CustomersFragMapActivity();
+                //Toast.makeText(MainActivity.this,"yes menu 1",Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.nav_settings:
+                fragment = new Menu3();
+                break;
+//            case R.id.nav_customerMapFrgActivity:
+//                fragment = new CustomersFragMapActivity();
+//                break;
+            case R.id.nav_menu4:
+                signOut();
+                startActivity(new Intent(WellcomeMainActivity.this, MainActivity.class));
+                break;
+            default:
+                fragment = new CustomersFragMapActivity();
+
+        }
+        if(fragment !=null)
+        {
+            FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
+            tx.replace(R.id.frame, fragment);
+            tx.commit();
+
+        }
+
+        android.support.v4.widget.DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+
+
+    }
+	
+========================step 3============
+ displaySelectedScreen(R.id.nav_menu1);
+	
+
+
+

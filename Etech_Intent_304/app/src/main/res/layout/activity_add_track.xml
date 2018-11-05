@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddTrackActivity">
+
+
+
+    <EditText
+        android:id="@+id/etTRackName"
+        android:layout_width="match_parent"
+        android:textAlignment="center"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/spArtisrGenres"
+        android:layout_marginBottom="-80dp"
+        android:hint="Enter track name" />
+
+    <!--<Spinner-->
+        <!--android:id="@+id/spArtisrGenres"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_marginTop="80dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:entries="@array/generic "></Spinner>-->
+    <SeekBar
+        android:id="@+id/seekBrRating"
+        android:layout_width="match_parent"
+        android:layout_marginTop="80dp"
+        android:layout_height="wrap_content"
+        android:max="5"/>
+
+    <Button
+        android:id="@+id/btTRacktADD"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="131dp"
+        android:text="Add Artis" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:text="Artist"
+        android:textAlignment="center"
+        android:textSize="22dp"
+         />
+
+    <ListView
+        android:id="@+id/listViewTRack"
+        android:layout_width="match_parent"
+        android:layout_height="339dp"
+        android:layout_marginTop="250dp"
+        android:layout_marginBottom="20dp"
+        />
+
+
+</RelativeLayout>

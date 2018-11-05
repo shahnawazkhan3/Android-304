@@ -1,0 +1,920 @@
+
+============== UI Layout ===========
+
+========toggle button hers show as========
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.zaaviyah.alpha_sqlite_rameez.AddActivity">
+
+
+    <ToggleButton
+        android:id="@+id/toggleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="71dp"
+        android:layout_marginStart="71dp"
+        android:layout_marginTop="40dp"
+        android:text="ToggleButton"
+        android:textAlignment="center"
+        android:textSize="22dp"
+        android:textStyle="bold" />
+
+    <ToggleButton
+        android:id="@+id/toggleButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/toggleButton"
+        android:layout_marginLeft="61dp"
+        android:layout_marginStart="61dp"
+        android:layout_toEndOf="@+id/toggleButton"
+        android:layout_toRightOf="@+id/toggleButton"
+        android:text="ToggleButton"
+        android:textSize="22dp" />
+
+    <Button
+        android:id="@+id/btSubmit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="160dp"
+        android:layout_toEndOf="@+id/toggleButton"
+        android:layout_toRightOf="@+id/toggleButton"
+        android:text="submit"
+        android:textSize="22dp" />
+</RelativeLayout>
+
+
+=====================
+package com.zaaviyah.alpha_sqlite_rameez;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+import android.widget.ToggleButton;
+
+public class AddActivity extends AppCompatActivity {
+
+
+    private ToggleButton toggleButton1, toggleButton2;
+    private Button buttonSubmit;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_add);
+        addListenerOnButtonClick();
+    }
+
+    public void addListenerOnButtonClick(){
+
+        toggleButton1=(ToggleButton)findViewById(R.id.toggleButton);
+        toggleButton2=(ToggleButton)findViewById(R.id.toggleButton2);
+        buttonSubmit=(Button)findViewById(R.id.btSubmit);
+
+        buttonSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                StringBuilder result = new StringBuilder();
+
+                result.append("ToggleButton : ").append(toggleButton1.getText());
+                result.append("\nToggleButton1 : ").append(toggleButton2.getText());
+                //Displaying the message in toast
+                Toast.makeText(getApplicationContext(), result.toString(),Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+}
+
+
+======================chECK BOX HERE SHOW AS THAT============
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.zaaviyah.alpha_sqlite_rameez.AddActivity">
+
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="54dp"
+        android:text="piza"
+        android:textSize="22dp" />
+
+    <CheckBox
+        android:id="@+id/checkBox2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/checkBox"
+        android:layout_alignStart="@+id/checkBox"
+        android:layout_below="@+id/checkBox"
+        android:layout_marginTop="26dp"
+        android:text="Coffee"
+        android:textSize="22dp" />
+
+    <CheckBox
+        android:id="@+id/checkBox3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/checkBox2"
+        android:layout_alignRight="@+id/checkBox2"
+        android:layout_below="@+id/checkBox2"
+        android:layout_marginTop="25dp"
+        android:text="Burger"
+        android:textSize="22dp" />
+
+    <Button
+        android:id="@+id/btSEnd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="107dp"
+        android:text="show"
+        android:layout_below="@+id/checkBox3"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>
+===========JAVA CHECK BOX=============
+
+
+package com.zaaviyah.alpha_sqlite_rameez;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.Toast;
+
+public class AddActivity extends AppCompatActivity {
+
+
+    CheckBox pizza,coffe,burger;
+    Button buttonOrder;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_add);
+
+        addListenerOnButtonClick();
+    }
+
+    private void addListenerOnButtonClick() {
+
+        pizza=(CheckBox)findViewById(R.id.checkBox);
+        coffe=(CheckBox)findViewById(R.id.checkBox2);
+        burger=(CheckBox)findViewById(R.id.checkBox3);
+        buttonOrder=(Button)findViewById(R.id.btSEnd);
+
+        buttonOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                /// HERS SHOW SOME CODE
+
+                int totalamount=0;
+
+                StringBuilder result=new StringBuilder();
+
+                result.append("Selected Items:");
+
+                if(pizza.isChecked()){
+                    result.append("\nPizza 100Rs");
+                    totalamount+=100;
+                }
+                if(coffe.isChecked()){
+                    result.append("\nCoffe 50Rs");
+                    totalamount+=50;
+                }
+                if(burger.isChecked()){
+                    result.append("\nBurger 120Rs");
+                    totalamount+=120;
+                }
+                result.append("\nTotal: "+totalamount+"Rs");
+                //Displaying the message on the toast
+                Toast.makeText(getApplicationContext(), result.toString(), Toast.LENGTH_LONG).show();
+            }
+        });
+
+    }
+}
+
+
+=================alert builder show as that values ==============
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.zaaviyah.alpha_sqlite_rameez.AddActivity">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="115dp"
+         />
+</RelativeLayout>
+
+=================
+package com.zaaviyah.alpha_sqlite_rameez;
+
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.Toast;
+
+public class AddActivity extends AppCompatActivity {
+
+
+
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+       // setContentView(R.layout.activity_add);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        //Uncomment the below code to Set the message and title from the strings.xml file
+        //builder.setMessage(R.string.dialog_message) .setTitle(R.string.dialog_title);
+
+        //Setting message manually and performing action on button click
+        builder.setMessage("Do you want to close this application ?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        finish();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        //  Action for 'NO' Button
+                        dialog.cancel();
+                    }
+                });
+
+        //Creating dialog box
+        AlertDialog alert = builder.create();
+        //Setting the title manually
+        alert.setTitle("AlertDialogExample");
+        alert.show();
+        setContentView(R.layout.activity_add);
+    }
+
+
+}
+==========================Android  Radio Button==================
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.zaaviyah.alpha_sqlite_rameez.AddActivity">
+
+
+    <RadioButton
+        android:id="@+id/radioButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="125dp"
+        android:layout_marginStart="125dp"
+        android:layout_marginTop="41dp"
+        android:text="RadioButton 1"
+        android:textSize="22dp" />
+
+    <RadioButton
+        android:id="@+id/radioButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="RadioButton"
+        android:textSize="22dp"
+        android:layout_below="@+id/radioButton"
+        android:layout_alignLeft="@+id/radioButton"
+        android:layout_alignStart="@+id/radioButton" />
+
+
+
+    <!--   Customized RadioButtons  -->
+
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/radioGroup"
+        android:layout_below="@+id/radioButton2"
+        android:layout_alignRight="@+id/radioButton2"
+        android:layout_alignEnd="@+id/radioButton2"
+        android:layout_marginRight="79dp"
+        android:layout_marginEnd="79dp"
+        android:layout_marginTop="112dp">
+
+        <RadioButton
+            android:id="@+id/radioMale"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="  Male"
+            android:layout_marginTop="10dp"
+            android:checked="false"
+            android:textSize="20dp" />
+
+        <RadioButton
+            android:id="@+id/radioFemale"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="   Female"
+            android:layout_marginTop="20dp"
+            android:checked="false"
+
+            android:textSize="20dp" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/radioButton2"
+        android:layout_alignStart="@+id/radioButton2"
+        android:layout_below="@+id/radioGroup"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="63dp"
+        android:onClick="onclickbuttonMethod"
+        android:text="Button" />
+</RelativeLayout>
+=================
+package com.zaaviyah.alpha_sqlite_rameez;
+
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
+
+public class AddActivity extends AppCompatActivity {
+
+
+ Button button;
+ RadioButton genderradioButton;
+ RadioGroup radioGroup;
+
+
+ @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+       setContentView(R.layout.activity_add);
+
+     radioGroup=(RadioGroup)findViewById(R.id.radioGroup);
+
+    }
+
+   public void onclickbuttonMethod(View v){
+
+    int selectedId = radioGroup.getCheckedRadioButtonId();
+
+    genderradioButton = (RadioButton) findViewById(selectedId);
+    if(selectedId==-1){
+     Toast.makeText(AddActivity.this,"Nothing selected", Toast.LENGTH_SHORT).show();
+    }
+    else{
+     Toast.makeText(AddActivity.this,genderradioButton.getText(), Toast.LENGTH_SHORT).show();
+    }
+
+   }
+
+
+}
+===================Android AutoCompleteTextView=============
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.zaaviyah.alpha_sqlite_rameez.AddActivity">
+
+
+    <AutoCompleteTextView
+        android:id="@+id/autoCompleteTextView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="67dp"
+        android:ems="10"
+        android:text="">
+
+        <requestFocus />
+    </AutoCompleteTextView>
+
+</RelativeLayout>
+
+
+==================== yes here show as that==========
+
+package com.zaaviyah.alpha_sqlite_rameez;
+
+import android.content.DialogInterface;
+import android.graphics.Color;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+
+public class AddActivity extends AppCompatActivity {
+
+
+
+    String[] language ={"C","C++","Java",".NET","iPhone","Android","ASP.NET","PHP"};
+
+ @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+       setContentView(R.layout.activity_add);
+
+
+
+     //Creating the instance of ArrayAdapter containing list of language names
+     ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.select_dialog_item,language);
+     //Getting the instance of AutoCompleteTextView
+     AutoCompleteTextView actv= (AutoCompleteTextView)findViewById(R.id.autoCompleteTextView1);
+     actv.setThreshold(1);//will start working from first character
+     actv.setAdapter(adapter);//setting the adapter data into the AutoCompleteTextView
+     actv.setTextColor(Color.RED);
+
+
+ }
+
+
+
+
+}
+=============================Android RatingBar==========
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.zaaviyah.alpha_sqlite_rameez.AddActivity">
+
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="57dp" />
+
+    <Button
+        android:id="@+id/btRating"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ratingBar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="154dp"
+        android:text="Rating" />
+</RelativeLayout>
+
+
+
+=============
+package com.zaaviyah.alpha_sqlite_rameez;
+
+import android.content.DialogInterface;
+import android.graphics.Color;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RatingBar;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+
+public class AddActivity extends AppCompatActivity {
+
+
+    RatingBar ratingbar1;
+    Button btRating;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+       setContentView(R.layout.activity_add);
+
+
+        addListenerOnButtonClick();
+
+    }
+
+    private void addListenerOnButtonClick() {
+        ratingbar1=(RatingBar)findViewById(R.id.ratingBar);
+        btRating=(Button)findViewById(R.id.btRating);
+        //Performing action on Button Click
+        btRating.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                //Getting the rating and displaying it on the toast
+                String rating=String.valueOf(ratingbar1.getRating());
+                Toast.makeText(getApplicationContext(), rating, Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+
+}
+
+
+===============listview ==========================
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.zaaviyah.alpha_sqlite_rameez.AddActivity">
+
+
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        />
+</RelativeLayout>
+
+
+=====mylist.xml=============
+<?xml version="1.0" encoding="utf-8"?>
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:orientation="vertical" android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent">-->
+
+    <!---->
+
+<!--</LinearLayout>-->
+
+
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:id="@+id/textView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Medium Text"
+    android:textStyle="bold"
+    android:textAppearance="?android:attr/textAppearanceMedium"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="5dp"
+    android:padding="2dp"
+    android:textColor="#4d4d4d"
+    />
+=================string.xml=============
+<!--<resources>-->
+    <!--<string name="app_name">Alpha_Sqlite_Rameez</string>-->
+<!--</resources>-->
+<resources>
+    <string name="app_name">ListView</string>
+    <string-array name="array_technology">
+        <item>Android</item>
+        <item>Java</item>
+        <item>Php</item>
+        <item>Hadoop</item>
+        <item>Sap</item>
+        <item>Python</item>
+        <item>Ajax</item>
+        <item>C++</item>
+        <item>Ruby</item>
+        <item>Rails</item>
+        <item>.Net</item>
+        <item>Perl</item>
+    </string-array>
+</resources>
+
+==================
+package com.zaaviyah.alpha_sqlite_rameez;
+
+import android.content.DialogInterface;
+import android.graphics.Color;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.ListView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RatingBar;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+
+public class AddActivity extends AppCompatActivity {
+
+
+    ListView listView;
+    TextView textView;
+    String[] listItem;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+       setContentView(R.layout.activity_add);
+
+        listView=(ListView)findViewById(R.id.listView);
+        textView=(TextView)findViewById(R.id.textView);
+        listItem = getResources().getStringArray(R.array.array_technology);
+
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, android.R.id.text1, listItem);
+        listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                // TODO Auto-generated method stub
+                String value=adapter.getItem(position);
+                Toast.makeText(getApplicationContext(),value,Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+    }
+
+
+
+
+}
+
+================= liner layout======================
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.zaaviyah.zaaviyah_ui.MainActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_weight="1"
+            android:text="Button" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Button" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Button" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Button" />
+    </LinearLayout>
+</RelativeLayout>
+
+
+===================Android Context Menu=============
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.zaaviyah.zaaviyah_ui.MainActivity">
+
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true" />
+</RelativeLayout>
+
+
+================android ====================
+
+package com.zaaviyah.zaaviyah_ui;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+
+    ListView listView1;
+    String contacts[]={"Ajay","Sachin","Sumit","Tarun","Yogesh"};
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        listView1=(ListView)findViewById(R.id.listview);
+        ArrayAdapter<String> adapter=new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,contacts);
+        listView1.setAdapter(adapter);
+        // Register the ListView  for Context menu
+        registerForContextMenu(listView1);
+
+    }
+
+
+
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo)
+    {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        menu.setHeaderTitle("Select The Action");
+        menu.add(0, v.getId(), 0, "Call");//groupId, itemId, order, title
+        menu.add(0, v.getId(), 0, "SMS");
+    }
+
+    public boolean onContextItemSelected(MenuItem item){
+        if(item.getTitle()=="Call"){
+            Toast.makeText(getApplicationContext(),"calling code",Toast.LENGTH_LONG).show();
+        }
+        else if(item.getTitle()=="SMS"){
+            Toast.makeText(getApplicationContext(),"sending sms code",Toast.LENGTH_LONG).show();
+        }else{
+            return false;
+        }
+        return true;
+    }
+}
+
+
+
+================================ Android JSON Parser Tutorial============
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.zaaviyah.zaaviyah_ui.MainActivity">
+
+
+    <TextView
+        android:id="@+id/tvView"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="82dp"
+        android:text="TextView" />
+</RelativeLayout>
+
+============
+package com.zaaviyah.zaaviyah_ui;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import org.json.JSONObject;
+
+public class MainActivity extends AppCompatActivity {
+    TextView textView1;
+    public static final String JSON_STRING="{\"employee\":{\"name\":\"Sachin\",\"salary\":56000}}";
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+
+
+        textView1=(TextView)findViewById(R.id.tvView);
+
+        try{
+            JSONObject emp=(new JSONObject(JSON_STRING)).getJSONObject("employee");
+
+            String empname=emp.getString("name");
+
+            int empsalary=emp.getInt("salary");
+
+
+            String str="Employee Name:"+empname+"\n"+"Employee Salary:"+empsalary;
+            textView1.setText(str);
+
+        }catch (Exception e) {e.printStackTrace();}
+
+    }
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
