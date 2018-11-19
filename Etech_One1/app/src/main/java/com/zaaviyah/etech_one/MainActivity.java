@@ -1,6 +1,5 @@
 package com.zaaviyah.etech_one;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
@@ -13,7 +12,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-  Button b1Blue, b2Email;
+  Button b1Blue, b2Green;
   ImageView img;
 
    Bitmap bmp;
@@ -26,20 +25,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         b1Blue =(Button)findViewById(R.id.btBlue);
-        b2Email= (Button)findViewById(R.id.btEmAIL);
+        b2Green= (Button)findViewById(R.id.btGreen);
 
         img =(ImageView)findViewById(R.id.imageView);
 
         BitmapDrawable abmp = (BitmapDrawable)img.getDrawable();
         bmp=abmp.getBitmap();
-
-      b2Email.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View view) {
-              Intent email = new Intent(MainActivity.this, EmailActivity.class);
-              startActivity(email);
-          }
-      });
 
     }
     public  void blue (View view){
