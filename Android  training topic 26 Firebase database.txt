@@ -1,0 +1,723 @@
+=============/ data base show that=================
+
+ARTIS  TABLE
+ 
+
+ArtisID  	  ArtisName  	  ArtisGenric
+1	  shah		  pop
+
+Track Table 
+
+TrackID	TrakName 	 TrackRating 	ArtisID    
+1	faisal		 5		2
+
+Step 1		 one table add artist
+
+====================database table============
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FirebaseActivity">
+
+
+    <EditText
+        android:id="@+id/etArtisName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/SpArtisrGenres"
+
+        android:layout_marginBottom="-72dp"
+        android:hint="Enter name" />
+
+    <Spinner
+        android:id="@+id/spArtisrGenres"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="72dp"
+        android:entries="@array/generic "></Spinner>
+
+    <Button
+        android:id="@+id/btArtistADD"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="131dp"
+        android:text="Add" />
+
+</RelativeLayout>
+
+=================ARTIS_ACTIVT.JAVA===========
+package com.zaaviyah.etech_intent_304;
+
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import android.webkit.WebView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+public class FirebaseActivity extends AppCompatActivity {
+
+    Button b1DDartis,b2Register ,b3forgetpass;
+    EditText etATISname;
+    Spinner spGeneric;
+
+    private FirebaseAuth auth;
+
+    DatabaseReference databaseArtists;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_firebase);
+
+        etATISname= (EditText)findViewById(R.id.etArtisName);
+        b1DDartis =(Button) findViewById(R.id.btArtistADD);
+        spGeneric=(Spinner) findViewById(R.id.spArtisrGenres);
+
+        //getting the reference of artists node
+        databaseArtists = FirebaseDatabase.getInstance().getReference("tbartists");
+
+       ///============this code login activity==============
+
+        b1DDartis.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //this method is actually performing the write operation
+                addArtist();
+            }
+        });
+
+    }
+
+    private void addArtist() {
+
+        String name = etATISname.getText().toString().trim();
+        String genre = spGeneric.getSelectedItem().toString();
+
+        //checking if the value is provided
+        if (!TextUtils.isEmpty(name)) {
+
+            //getting a unique id using push().getKey() method
+            //it will create a unique id and we will use it as the Primary Key for our Artist
+            String id = databaseArtists.push().getKey();
+
+            //creating an Artist Object
+            Artist artist = new Artist(id,name,genre);
+
+            //Saving the Artist
+            databaseArtists.child(id).setValue(artist);
+
+            //displaying a success toast
+            Toast.makeText(this, "Artist added", Toast.LENGTH_LONG).show();
+        } else {
+            //if the value is not given displaying a toast
+            Toast.makeText(this, "Please enter a name", Toast.LENGTH_LONG).show();
+        }
+    }
+}
+
+===================DATA BASE ARTIS.JAVA==========
+package com.zaaviyah.etech_intent_304;
+
+public class Artist {
+
+
+    private String artistId;
+    private String artistName;
+    private String artistGenre;
+
+    public Artist(){
+        //this constructor is required
+    }
+
+    public Artist(String artistId, String artistName, String artistGenre) {
+        this.artistId = artistId;
+        this.artistName = artistName;
+        this.artistGenre = artistGenre;
+    }
+
+    public String getArtistId() {
+        return artistId;
+    }
+
+    public String getArtistName() {
+        return artistName;
+    }
+
+    public String getArtistGenre() {
+        return artistGenre;
+    }
+}
+
+STRING.ZML
+<resources>
+    <string name="app_name">Etech_Intent_304</string>
+
+    <array name="generic">
+
+        <item>Rock</item>
+        <item>Fufi</item>
+        <item>PoP</item>
+        <item>feLK</item>
+
+
+    </array>
+</resources>
+==========================STEP 2 ARARRY =====================
+
+step 2.1)
+CREATE   artis_list_layout.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/tvListArtisName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/tvList_artis_generic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+</LinearLayout>
+
+==================step 2.2)==============
+package com.zaaviyah.etech_intent_304;
+
+import android.app.Activity;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.TextView;
+
+import java.util.List;
+
+public class ArtistList extends ArrayAdapter<Artist> {
+
+    private Activity context;
+    List<Artist> artists;
+
+    public ArtistList(Activity context, List<Artist> artists) {
+        super(context, R.layout.layout_artist_list, artists);
+        this.context = context;
+        this.artists = artists;
+    }
+
+    @NonNull
+    @Override
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+
+        LayoutInflater inflater = context.getLayoutInflater();
+        View listViewItem = inflater.inflate(R.layout.layout_artist_list, null, true);
+
+        TextView textViewName = (TextView) listViewItem.findViewById(R.id.tvListArtisName);
+        TextView textViewGenre = (TextView) listViewItem.findViewById(R.id.tvList_artis_generic);
+
+        Artist artist = artists.get(position);
+
+        textViewName.setText(artist.getArtistName());
+        textViewGenre.setText(artist.getArtistGenre());
+
+        return listViewItem;
+    }
+}
+
+
+===================MAINactivty.java
+
+CREATE METHOD ONstart()
+
+  ListView listViewArtist;
+
+    //a list to store all the artist from firebase database
+    List<Artist> artists;
+
+
+        listViewArtist=(ListView)findViewById(R.id.listViewArtist);
+
+============inside on create method===========
+  listViewArtist=(ListView)findViewById(R.id.listViewArtist);
+
+        //getting the reference of artists node
+        databaseArtists = FirebaseDatabase.getInstance().getReference("artists");
+
+
+
+        //list to store artists
+        artists = new ArrayList<>();
+
+====================inside on create end============
+
+
+ @Override
+    protected void onStart(){
+        super.onStart();
+
+        databaseArtists.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                //====================1ST DECLEAR====================
+
+                ////a list to store all the artist from firebase database
+                //    List<Artist> artists;
+
+                //list to store artists
+               // artists = new ArrayList<>();
+
+
+                ///=========================/////==================
+                //clearing the previous artist list
+
+                artists.clear();
+                //iterating through all the nodes
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    //getting artist
+                    Artist artist = postSnapshot.getValue(Artist.class);
+                    //adding artist to the list
+                    artists.add(artist);
+                }
+
+                //creating adapter
+                ArtistList artistAdapter = new ArtistList(FirebaseActivity.this, artists);
+                //attaching adapter to the listview
+                listViewArtist.setAdapter(artistAdapter);
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+======================step 2.2.3=============== mainactivity.java===========
+package com.zaaviyah.etech_intent_304;
+
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import android.webkit.WebView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.Spinner;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class FirebaseActivity extends AppCompatActivity {
+
+    Button b1DDartis,b2Register ,b3forgetpass;
+    EditText etATISname;
+    Spinner spGeneric;
+
+    private FirebaseAuth auth;
+
+    DatabaseReference databaseArtists;
+    ListView listViewArtist;
+
+    //a list to store all the artist from firebase database
+    List<Artist> artists;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_firebase);
+
+        etATISname= (EditText)findViewById(R.id.etArtisName);
+        b1DDartis =(Button) findViewById(R.id.btArtistADD);
+        spGeneric=(Spinner) findViewById(R.id.spArtisrGenres);
+
+        listViewArtist=(ListView)findViewById(R.id.listViewArtist);
+
+        //getting the reference of artists node
+        databaseArtists = FirebaseDatabase.getInstance().getReference("artists");
+
+
+
+        //list to store artists
+        artists = new ArrayList<>();
+
+        b1DDartis.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //this method is actually performing the write operation
+                addArtist();
+            }
+        });
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        databaseArtists.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                //====================1ST DECLEAR====================
+
+                ////a list to store all the artist from firebase database
+                //    List<Artist> artists;
+
+                //list to store artists
+               // artists = new ArrayList<>();
+
+
+                ///=========================/////==================
+                //clearing the previous artist list
+
+                artists.clear();
+                //iterating through all the nodes
+                for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
+                    //getting artist
+                    Artist artist = postSnapshot.getValue(Artist.class);
+                    //adding artist to the list
+                    artists.add(artist);
+                }
+
+                //creating adapter
+                ArtistList artistAdapter = new ArtistList(FirebaseActivity.this, artists);
+                //attaching adapter to the listview
+                listViewArtist.setAdapter(artistAdapter);
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void addArtist() {
+
+        String name = etATISname.getText().toString().trim();
+        String genre = spGeneric.getSelectedItem().toString();
+
+        //checking if the value is provided
+        if (!TextUtils.isEmpty(name)) {
+
+            //getting a unique id using push().getKey() method
+            //it will create a unique id and we will use it as the Primary Key for our Artist
+            String id = databaseArtists.push().getKey();
+
+            //creating an Artist Object
+            Artist artist = new Artist(id,name,genre);
+
+            //Saving the Artist
+            databaseArtists.child(id).setValue(artist);
+
+            //displaying a success toast
+            Toast.makeText(this, "Artist added", Toast.LENGTH_LONG).show();
+        } else {
+            //if the value is not given displaying a toast
+            Toast.makeText(this, "Please enter a name", Toast.LENGTH_LONG).show();
+        }
+    }
+}
+
+=======================STEP 3 ADD TRACK activity===========
+
+step 3.1 :
+listViewArtist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+
+                /// HERE SOME CODE
+                Artist artist = artists.get(i);
+
+                //creating an intent
+                Intent intent = new Intent(getApplicationContext(), AddTrackActivity.class);
+
+                //putting artist name and id to intent
+                intent.putExtra(ARTIST_ID, artist.getArtistId());
+                intent.putExtra(ARTIST_NAME, artist.getArtistName());
+
+                //starting the activity with intent
+                startActivity(intent);
+            }
+        });
+
+step 3.1.2) 
+
+================addtrack.xml============
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddTrackActivity">
+
+
+
+    <TextView
+        android:id="@+id/textViewArtist"
+        android:textAlignment="center"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:layout_below="@id/textViewArtist"
+        android:id="@+id/editTextName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter track name" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextName">
+
+        <SeekBar
+            android:layout_weight="1"
+            android:id="@+id/seekBarRating"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="5">
+
+        </SeekBar>
+
+        <TextView
+            android:text="1"
+            android:id="@+id/textViewRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/buttonAddTrack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linearLayout"
+        android:text="Add" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonAddTrack"
+        android:text="Tracks"
+        android:textAlignment="center"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+
+    <ListView
+        android:id="@+id/listViewTracks"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView">
+        
+    </ListView>
+</RelativeLayout>
+
+
+step 3.1.3
+
+======================addtractActivity.java==============
+
+package com.zaaviyah.etech_304_ui;
+
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.List;
+
+public class AddTrackActivity extends AppCompatActivity {
+
+
+    Button buttonAddTrack;
+    EditText editTextTrackName;
+    SeekBar seekBarRating;
+    TextView textViewRating, textViewArtist;
+    ListView listViewTracks;
+
+    DatabaseReference databaseTracks;
+
+    List<Track> tracks;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_add_track);
+
+
+
+        Intent intent = getIntent();
+
+        databaseTracks = FirebaseDatabase.getInstance().getReference("tracks").child(intent.getStringExtra(MainActivity.ARTIST_ID));
+
+        buttonAddTrack = (Button) findViewById(R.id.buttonAddTrack);
+        editTextTrackName = (EditText) findViewById(R.id.editTextName);
+        seekBarRating = (SeekBar) findViewById(R.id.seekBarRating);
+        textViewRating = (TextView) findViewById(R.id.textViewRating);
+        textViewArtist = (TextView) findViewById(R.id.textViewArtist);
+        listViewTracks = (ListView) findViewById(R.id.listViewTracks);
+
+
+        textViewArtist.setText(intent.getStringExtra(MainActivity.ARTIST_NAME));
+
+
+        //RATING BAR SHOW==============
+        seekBarRating.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+
+                textViewRating.setText(String.valueOf(i));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        //============ BUUTON ADD TRACK===============================//
+
+        buttonAddTrack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                saveTrack();
+            }
+        });
+
+
+    }
+
+    private void saveTrack() {
+
+        String trackName = editTextTrackName.getText().toString().trim();
+        int rating = seekBarRating.getProgress();
+
+        if (!TextUtils.isEmpty(trackName)) {
+
+            String id  = databaseTracks.push().getKey();
+
+            Track track = new Track(id, trackName, rating);
+
+            databaseTracks.child(id).setValue(track);
+
+            Toast.makeText(this, "Track saved", Toast.LENGTH_LONG).show();
+
+            editTextTrackName.setText("");
+
+        } else {
+            Toast.makeText(this, "Please enter track name", Toast.LENGTH_LONG).show();
+        }
+    }
+}
+STEP 3.1.4
+
+===================Add list view here show ===============
+
+
+TrackList.java code
+
+
+public class TrackList extends ArrayAdapter<Track> {  
+    private Activity context;  
+    List<Track> tracks;  
+  
+    public TrackList(Activity context, List<Track> tracks) {  
+        super(context, R.layout.layout_artist_list, tracks);  
+        this.context = context;  
+        this.tracks = tracks;  
+    }  
+  
+  
+    @Override  
+    public View getView(int position, View convertView, ViewGroup parent) {  
+        LayoutInflater inflater = context.getLayoutInflater();  
+        View listViewItem = inflater.inflate(R.layout.layout_artist_list, null, true);  
+  
+        TextView textViewName = (TextView) listViewItem.findViewById(R.id.textViewName);  
+        TextView textViewRating = (TextView) listViewItem.findViewById(R.id.textViewGenre);  
+  
+        Track track = tracks.get(position);  
+        textViewName.setText(track.getTrackName());  
+        textViewRating.setText(String.valueOf(track.getRating()));  
+  
+        return listViewItem;  
+    }  
+}   
+=============done here code show as that
+
+
+
+
+
+
+
+
+
